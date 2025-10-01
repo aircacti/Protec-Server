@@ -3,7 +3,7 @@ from fastapi import FastAPI, Request
 from config import load_config
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from database import Base, engine
-from routes import mode, status
+from routes import mode, status, howdy
 from response import make_problem_response  # your response helpers
 from auth import is_token_valid
 
@@ -15,6 +15,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Protec - Security API")
 app.include_router(mode.router)
 app.include_router(status.router)
+app.include_router(howdy.router)
 
 # Global exception handlers for standardized responses
 @app.exception_handler(StarletteHTTPException)
