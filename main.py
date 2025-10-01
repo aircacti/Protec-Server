@@ -42,6 +42,8 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
     return make_problem_response(exc.status_code, "Other exception", extra={"details": exc.detail, "path": request.url.path})
 
 if __name__ == "__main__":
+    if config["auth"]["token"] == "supersecrettoken123":
+        print("Change default token in config.yaml!")
     uvicorn.run(
         "main:app",
         host=config["server"]["host"],
