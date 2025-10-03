@@ -1,3 +1,6 @@
+import os
+import sys
+
 import uvicorn
 from fastapi import FastAPI, Request
 from config import load_config
@@ -44,9 +47,30 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
 if __name__ == "__main__":
     if config["auth"]["token"] == "supersecrettoken123":
         print("Change default token in config.yaml!")
+
+    ssl_config = config.get("server", {}).get("ssl", {})
+    ssl_enabled = ssl_config.get("enabled", False)
+
+    if ssl_enabled:
+        certfile = ssl_config.get("certfile")
+        keyfile = ssl_config.get("keyfile")
+
+
+        if not (certfile and keyfile):
+            print("SSL enabled but certfile or keyfile is not specified in config.yaml!")
+            sys.exit(1)
+        if not os.path.exists(certfile):
+            print(f"SSL certificate file not found: {certfile}")
+            sys.exit(1)
+        if not os.path.exists(keyfile):
+            print(f"SSL key file not found: {keyfile}")
+            sys.exit(1)
+
     uvicorn.run(
         "main:app",
         host=config["server"]["host"],
         port=int(config["server"]["port"]),
-        reload=True
+        reload=True,
+        ssl_certfile=certfile if ssl_enabled else None,
+        ssl_keyfile=keyfile if ssl_enabled else None,
     )
