@@ -26,3 +26,6 @@ Thumbs.db
 certs/*.key
 certs/*.crt
 certs/*.pem
+
+# Github
+.github/
