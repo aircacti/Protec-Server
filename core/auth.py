@@ -1,5 +1,5 @@
 from fastapi import Request, HTTPException, status
-from config import load_config
+from core.config import load_config
 
 config = load_config()
 API_TOKEN = config["auth"]["token"]

@@ -3,8 +3,8 @@ server:
   port: "2016"
   ssl:
     enabled: false
-    certfile: "./certs/server.crt"
-    keyfile: "./certs/server.key"
+    certfile: "local/server.crt"
+    keyfile: "local/server.key"
 
 auth:
   token: "supersecrettoken123"

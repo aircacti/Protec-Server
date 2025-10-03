@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from database import SessionLocal
-from models.mode import Mode
-from auth import verify_token
-from response import make_ok_response, make_problem_response
+from core.database import SessionLocal
+from core.models.mode import Mode
+from core.auth import verify_token
+from core.response import make_ok_response, make_problem_response
 
 router = APIRouter(prefix="/mode", tags=["mode"])
 

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
-from database import SessionLocal
-from models.mode import Mode
-from models.device_report import DeviceReport
-from auth import verify_token
-from response import make_ok_response, make_problem_response
-from utils.TimeUtility import TimeUtility
+from core.database import SessionLocal
+from core.models.mode import Mode
+from core.models.device_report import DeviceReport
+from core.auth import verify_token
+from core.response import make_ok_response, make_problem_response
+from core.utils.TimeUtility import TimeUtility
 
 router = APIRouter(prefix="/howdy", tags=["howdy"])
 

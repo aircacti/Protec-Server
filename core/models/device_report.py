@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, BigInteger
-from database import Base
+from core.database import Base
 
 class DeviceReport(Base):
     __tablename__ = "device_reports"

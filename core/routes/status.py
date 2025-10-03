@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from response import make_ok_response
-from utils.TimeUtility import TimeUtility
+from core.response import make_ok_response
+from core.utils.TimeUtility import TimeUtility
 
 router = APIRouter(prefix="/status", tags=["status"])
 

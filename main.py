@@ -3,12 +3,13 @@ import sys
 
 import uvicorn
 from fastapi import FastAPI, Request
-from config import load_config
+from core.config import load_config
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from database import Base, engine
-from routes import mode, status, howdy
-from response import make_problem_response  # your response helpers
-from auth import is_token_valid
+from core.database import Base, engine
+from core.routes import mode
+from core.routes import howdy, status
+from core.response import make_problem_response
+from core.auth import is_token_valid
 
 config = load_config()
 

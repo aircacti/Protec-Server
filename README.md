@@ -2,19 +2,30 @@
 
 A lightweight REST API server for reporting device status, managing security modes, and monitoring health.
 
----
 
-## 🚀 Features
+## 🚀 About
 
 - **Status API** — `/status` endpoint, accessible without authorization  
 - **Mode management** — `normal` / `lockdown` / `shutdown`  
 - **Token-based authorization** — changing mode requires `Authorization: Bearer <token>` header  
 - **Health monitoring** — collecting and reporting device/module status  
-- **Simple database** — SQLite or other lightweight storage for states  
+- **Simple database** — SQLite local storage
 - **Easy configuration** — via `config.yaml` file
 
 ---
 
+## 🗂 Project Structure
+
+- **🟢 Core Files**  
+  The files responsible for the program's functionality are located in the `core/` folder.  
+  The main entry point of the application is `main.py`.  
+
+- **🟡 Local Files**  
+  All instance-specific files, such as configuration files, databases, or other user-specific data, are stored in the `local/` folder.  
+  
+This separation helps prevent accidental changes that could break the program.  
+
+---
 
 ## 🔐 Testing
 
