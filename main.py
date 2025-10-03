@@ -70,7 +70,7 @@ if __name__ == "__main__":
         "main:app",
         host=config["server"]["host"],
         port=int(config["server"]["port"]),
-        reload=True,
+        reload=False,
         ssl_certfile=certfile if ssl_enabled else None,
         ssl_keyfile=keyfile if ssl_enabled else None,
     )
