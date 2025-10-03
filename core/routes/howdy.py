@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from core.database import SessionLocal
 from core.models.mode import Mode
 from core.models.device_report import DeviceReport
-from core.auth import verify_token
+from core.auth import require_token
 from core.response import make_ok_response, make_problem_response
 from core.utils.TimeUtility import TimeUtility
 
@@ -16,7 +16,7 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/", dependencies=[Depends(verify_token)])
+@router.get("/", dependencies=[Depends(require_token)])
 def howdy(request: Request, db: Session = Depends(get_db)):
     current_mode = db.query(Mode).first()
     mode_value = current_mode.mode if current_mode else "normal"

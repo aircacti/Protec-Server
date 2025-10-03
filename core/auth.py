@@ -4,7 +4,7 @@ from core.config import load_config
 config = load_config()
 API_TOKEN = config["auth"]["token"]
 
-def verify_token(request: Request):
+def require_token(request: Request):
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized")
