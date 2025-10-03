@@ -53,4 +53,4 @@ def howdy(request: Request, db: Session = Depends(get_db)):
         "timestamp": system_timestamp,
         "ip_changed": ip_changed
     }
-    return make_ok_response(f"Great {device_name}", extra)
+    return make_ok_response(f"Hello {device_name}", extra)
